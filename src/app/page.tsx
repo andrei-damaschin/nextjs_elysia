@@ -1,5 +1,7 @@
 import client from "@/src/lib/eden"; // Import the client we just made
-import { TrpcTest } from "../components/TrpcTest";
+import { TrpcCreateUser } from "../components/trpc/TrpcCreateUser";
+import { TrpcTest } from "../components/trpc/TrpcTest";
+import { VanillaUserList } from "../components/vanilla/VanillaUserList";
 
 export default async function Home() {
   // 👇 Notice how we call the route.
@@ -12,9 +14,13 @@ export default async function Home() {
 
   return (
     <main>
-      <h1>Server Response (Eden):</h1>
-      <pre>{JSON.stringify(data, null, 2)}</pre>
-      <TrpcTest />
+
+     
+      <VanillaUserList />
+      <div className="mt-8">
+        <TrpcCreateUser />
+        <TrpcTest />
+      </div>
     </main>
   );
 }
