@@ -6,7 +6,7 @@ import { VanillaUserList } from "../components/vanilla/VanillaUserList";
 export default async function Home() {
   // 👇 Notice how we call the route.
   // If your backend is app.get('/', ...), we use client.index.get()
-  const { data, error } = await client.index.get();
+  const { data, error } = await client.get();
 
   if (error) {
     return <div>Error: {JSON.stringify(error.value)}</div>;

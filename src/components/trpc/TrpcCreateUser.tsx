@@ -8,7 +8,7 @@ import { z } from "zod";
 // Define the validation schema (matching your backend!)
 const createUserSchema = z.object({
   username: z.string().min(3, "Username must be at least 3 characters"),
-  email: z.string().email("Invalid email format"),
+  email: z.email("Invalid email format"),
 });
 
 // Infer the type from the schema
@@ -21,13 +21,11 @@ export function TrpcCreateUser() {
   // 2. Setup the mutation
   const createUserMutation = trpc.userCreate.useMutation({
     onSuccess: () => {
-      // 🎉 When successful, tell the list to refresh automatically
       utils.userList.invalidate();
-      reset(); // Clear the form
+      reset();
     },
   });
 
-  // 3. Setup the form
   const {
     register,
     handleSubmit,

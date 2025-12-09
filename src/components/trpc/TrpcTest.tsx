@@ -1,10 +1,10 @@
 "use client";
-"use cache";
+
 import { trpc } from "@/src/lib/trpc";
-import { cacheLife } from "next/cache";
+
 export function TrpcTest() {
   const { data, isLoading, error } = trpc.userList.useQuery(undefined);
-cacheLife( "seconds");
+
   if (isLoading)
     return <div className="text-blue-500 animate-pulse">Loading tRPC...</div>;
   if (error)
@@ -34,7 +34,7 @@ cacheLife( "seconds");
               >
                 Email
               </th>
-              {/* Added ID column to match your other table */}
+
               <th
                 scope="col"
                 className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
